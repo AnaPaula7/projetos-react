@@ -1,12 +1,62 @@
-# React + Vite
+# 💱 Conversor de Moedas com React
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este é um projeto simples de **conversor de moedas** desenvolvido em **React**, utilizando a API pública [ExchangeRate-API](https://www.exchangerate-api.com/) para buscar taxas de câmbio atualizadas.
 
-Currently, two official plugins are available:
+## 🚀 Funcionalidades
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Conversão de valores entre diferentes moedas.
+- Atualização automática da cotação ao alterar a moeda ou valor.
+- Interface intuitiva e responsiva.
 
-## Expanding the ESLint configuration
+## 🛠️ Tecnologias Utilizadas
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- React
+- Axios (requisições HTTP)
+- CSS (estilização)
+- API pública de câmbio: ExchangeRate-API
+
+## 🎥 Demonstração
+
+> Em breve, você pode adicionar uma imagem ou GIF aqui mostrando o projeto em funcionamento.
+
+## 📦 Instalação e Execução
+
+Clone o repositório e execute o projeto localmente:
+
+```bash
+git clone https://github.com/AnaPaula7/projetos-react.git
+cd conversordemoedas
+npm install
+npm run dev
+Depois, abra no navegador: http://localhost:5173
+
+🧠 Como funciona?
+Ao carregar a aplicação, a API retorna todas as taxas de câmbio em relação ao USD.
+
+O usuário informa um valor, escolhe a moeda de origem e a moeda de destino.
+
+O sistema calcula a conversão com base nas taxas recebidas.
+
+O valor convertido é exibido automaticamente na tela.
+
+📁 Estrutura do Projeto
+css
+Copiar
+Editar
+conversordemoedas/
+│
+├── public/
+├── src/
+│   ├── components/
+│   │   └── CurrencyConverter.jsx
+│   ├── App.jsx
+│   └── main.jsx
+│
+├── package.json
+└── README.md
+📌 Observação
+A API usada possui limite gratuito de requisições por dia. Para evitar problemas, use com moderação ou obtenha uma chave pessoal.
+
+👩‍💻 Autor
+Ana Paula
+🔗 GitHub: @AnaPaula7
