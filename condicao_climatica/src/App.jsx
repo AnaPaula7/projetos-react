@@ -1,34 +1,60 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState, useEffect } from "react";
+import axios from 'axios';
+
+import Busca from './components/Busca';
+import ClimaAtual from './components/ClimaAtual';
+import Previsao from './components/Previsao';
+
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [cidade, setCidade] = useState("");
+  const [clima, setClima] = useState(null);
+  const [previsao, setPrevisao] = useState([]);
+
+  const apiKey = import.meta.env.VITE_API_KEY || "";
+
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(async (position) => {
+      console.log(position);
+
+      const lat = position.coords.latitude;
+      const lon = position.coords.longitude;
+
+      const resposta = await axios.get(
+        `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=$appid=${apiKey}&units=metric&lang=pt_br`
+      );
+      setCidade(resposta.data.name);
+      setClima(resposta.data);
+    });
+  }, [apiKey]);
+
+  const buscarClima = async() => {
+    try {
+      const respostaClima = await axios.get(
+        `https://api.openweathermap.org/data/2.5/weather?q=${cidade}&appid=${apiKey}&units=metric&lang=pt_br`
+      );
+
+     const respostaPrevisao = await axios.get(
+        `https://api.openweathermap.org/data/2.5/forecast?q=${cidade}&appid=${apiKey}&units=metric&lang=pt_br`
+      );  
+
+      setClima(respostaClima.data);
+
+      setPrevisao(respostaPrevisao.data.list.slice(0, 5));
+    } catch (error) {
+      console.log("Erro ao buscar clima", error)
+    }
+  };
+  console.log(clima);
+
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div>
+      <h1>Condições Climáticas</h1>
+      <Busca cidade={cidade} setCidade={setCidade} buscarClima={buscarClima}/>
+      {clima && <ClimaAtual clima={clima}/>}
+      {previsao.length > 0 && <Previsao previsoes={previsao}/>}
+    </div>
   )
 }
 
