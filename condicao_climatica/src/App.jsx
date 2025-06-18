@@ -4,6 +4,7 @@ import axios from 'axios';
 import Busca from './components/Busca';
 import ClimaAtual from './components/ClimaAtual';
 import Previsao from './components/Previsao';
+import { ClimaContainer } from "./AppStyles";
 
 
 function App() {
@@ -21,7 +22,7 @@ function App() {
       const lon = position.coords.longitude;
 
       const resposta = await axios.get(
-        `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=$appid=${apiKey}&units=metric&lang=pt_br`
+        `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}$appid=${apiKey}&units=metric&lang=pt_br`
       );
       setCidade(resposta.data.name);
       setClima(resposta.data);
@@ -49,12 +50,12 @@ function App() {
 
 
   return (
-    <div>
-      <h1>Condições Climáticas</h1>
+    <ClimaContainer>
+      <h2>Condições Climáticas</h2>
       <Busca cidade={cidade} setCidade={setCidade} buscarClima={buscarClima}/>
       {clima && <ClimaAtual clima={clima}/>}
       {previsao.length > 0 && <Previsao previsoes={previsao}/>}
-    </div>
+    </ClimaContainer>
   )
 }
 

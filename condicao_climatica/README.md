@@ -1,12 +1,31 @@
-# React + Vite
+🌤️ Projeto React - Consulta de Condições Climáticas
+Este é um aplicativo simples de previsão do tempo feito com ReactJS e Styled Components, que consome a API da OpenWeatherMap para exibir:
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+✅ Condições atuais do clima
+✅ Previsão para as próximas horas
+✅ Detecção automática da localização atual via Geolocalização do navegador
 
-Currently, two official plugins are available:
+📸 Screenshot
+<!-- (Você pode adicionar um print do seu app aqui depois) -->
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+🚀 Funcionalidades
+Busca de clima por cidade
 
-## Expanding the ESLint configuration
+Exibição de temperatura, descrição do clima e ícone de condição atual
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Previsão para as próximas horas (temperatura + descrição)
+
+Geolocalização automática na primeira abertura
+
+Interface responsiva e estilizada com styled-components
+
+🛠️ Tecnologias Utilizadas
+ReactJS
+
+Axios (para requisições HTTP)
+
+Styled-components (para o CSS-in-JS)
+
+API OpenWeatherMap
+
+Vite (para build e desenvolvimento rápido)
